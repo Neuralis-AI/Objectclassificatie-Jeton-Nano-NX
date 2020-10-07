@@ -18,7 +18,7 @@ OF
 Maak na het opstarten en configureren van je Nano of NX een makkelijk vindbare map aan.   
 Om het makkelijk te houden doen we dit op het bureaublad.   
 
-Je hebot volgende pakketten nodig in deze handleiding, voer dit commando uit in de terminal:
+Je hebt volgende pakketten nodig in deze handleiding, voer dit commando uit in de terminal:
 ```
 sudo apt install -y nano git
 ```
@@ -34,14 +34,14 @@ Ga naar de nieuw aangemaakte map en clone deze repository met het commando:
 git clone https://github.com/Neuralis-AI/Objectclassificatie-Jeton-Nano-NX.git
 ```
 
-Open de nieuwe map "Objectclassificatie-Jeton-Nano-NX"
+Open de nieuwe map "Objectclassificatie-Jeton-Nano-NX" en verfolgens de map "configs"
 
 In deze map zitten alle configuraties die je nodig hebt om objectclassificatie te doen met als bron een IP-camera (RTSP.txt), een aangesloten camera op de CSI connector (CSI.txt) of een mp4bestand (MP4.txt)
 
 **Docker/Deepstream:**   
 
 Om echt van start te gaan gaan we een Dockercontainer downloaden.   
-Dit houd in dat we een soort "virtuele harde schijf" downloaden waar alle programma's en tools in voorgeinstalleerd staan.   
+Een Docker container is een soort "virtuele harde schijf" downloaden waar alle programma's en tools in voorgeinstalleerd staan.   
 
 Voer volgende commando uit in de terminal:
 
@@ -50,9 +50,10 @@ xhost +
 sudo docker run -it --rm --net=host --runtime nvidia  -e DISPLAY=$DISPLAY -w /opt/nvidia/deepstream/deepstream-5.0.1 -v /tmp/.X11-unix/:/tmp/.X11-unix -v $HOME/Desktop/mapnaam/Objectclassificatie-Jeton-Nano-NX/configs:/configs nvcr.io/nvidia/deepstream-l4t:5.0.1-20.09-samples
 ```
 
-Let vooral op het stukje "-v $HOME/Desktop/mapnaam/Objectclassificatie-Jeton-Nano-NX/configs:/configs" Hiermee geven we de Docker container toegang tot deze map in ons eigen bestandssysteem.   
+Let vooral op het stukje "-v $HOME/Desktop/mapnaam/Objectclassificatie-Jeton-Nano-NX/configs:/configs"   
+Hiermee geven we de Docker container toegang tot deze map in ons eigen bestandssysteem.   
 Indien je de mapnaam hebt aangepast moet je "mapnaam" even aanpassen naar je eigen uitgekozen naam.   
-
+   
 In de "configs" map hebben we 3 configuraties gemaakt, beiden afgeregeld op het neurale netwerk genaamd "YoloV3-Tiny".   
 Dit netwerk is getrained om 80 verschillende objecten correct te kunnen detecteren en classificeren.   
 Dit model is ook het beste qua snelheid/performance in combinatie met een goede accuracy en eenvoudig in gebruik zijn.   
